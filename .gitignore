@@ -1,0 +1,5 @@
+data/database.json
+server.log
+server-error.log
+*.png
+!assets/img/*.png

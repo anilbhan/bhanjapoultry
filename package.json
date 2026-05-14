@@ -1,0 +1,13 @@
+{
+  "name": "bbhanja-poultry-supply",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Secure Bootstrap website and admin content manager for B Bhanja Poultry Supply.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

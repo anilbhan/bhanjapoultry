@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Admin content editor for B Bhanja Poultry Supply website.">
+    <title>Admin | B Bhanja Poultry Supply</title>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body data-page="admin" class="admin-body">
+    <nav class="navbar navbar-expand-lg admin-nav">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+          <span class="brand-mark">BB</span>
+          <span class="brand-name">B Bhanja Admin</span>
+        </a>
+        <div class="d-flex gap-2">
+          <a class="btn btn-outline-success" href="index.html"><i class="bi bi-eye me-1"></i> View Site</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="admin-main">
+      <div class="container">
+        <div class="admin-header">
+          <div>
+            <span class="eyebrow text-success">Content Manager</span>
+            <h1>Update website content</h1>
+            <p>Changes are saved to the server database and used by the customer page.</p>
+          </div>
+          <div class="admin-actions">
+            <button class="btn btn-success" type="button" data-save><i class="bi bi-check2-circle me-1"></i> Save</button>
+            <button class="btn btn-outline-secondary" type="button" data-export><i class="bi bi-download me-1"></i> Export</button>
+            <label class="btn btn-outline-secondary mb-0">
+              <i class="bi bi-upload me-1"></i> Import
+              <input class="visually-hidden" type="file" accept="application/json" data-import>
+            </label>
+            <button class="btn btn-outline-danger" type="button" data-reset><i class="bi bi-arrow-counterclockwise me-1"></i> Reset</button>
+            <button class="btn btn-outline-dark" type="button" data-logout><i class="bi bi-box-arrow-right me-1"></i> Logout</button>
+          </div>
+        </div>
+
+        <div class="alert alert-success d-none" data-alert role="alert"></div>
+
+        <form class="admin-form" data-admin-form>
+          <div class="row g-4">
+            <div class="col-xl-4">
+              <div class="admin-sidebar">
+                <div class="list-group">
+                  <a class="list-group-item list-group-item-action active" href="#business">Business</a>
+                  <a class="list-group-item list-group-item-action" href="#hero">Hero</a>
+                  <a class="list-group-item list-group-item-action" href="#products">Products</a>
+                  <a class="list-group-item list-group-item-action" href="#features">Features</a>
+                  <a class="list-group-item list-group-item-action" href="#stats">Stats</a>
+                  <a class="list-group-item list-group-item-action" href="#about">About</a>
+                  <a class="list-group-item list-group-item-action" href="#gallery">Popular Orders</a>
+                  <a class="list-group-item list-group-item-action" href="#contact">Contact</a>
+                  <a class="list-group-item list-group-item-action" href="#security">Security</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-8">
+              <section id="business" class="admin-panel">
+                <h2>Business Details</h2>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="businessName">Business Name</label>
+                    <input class="form-control" id="businessName" data-field="business.name" type="text" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="tagline">Tagline</label>
+                    <input class="form-control" id="tagline" data-field="business.tagline" type="text">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" id="location" data-field="business.location" type="text">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="hours">Open Hours</label>
+                    <input class="form-control" id="hours" data-field="business.hours" type="text">
+                  </div>
+                </div>
+              </section>
+
+              <section id="hero" class="admin-panel">
+                <h2>Hero Section</h2>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="heroKicker">Small Label</label>
+                    <input class="form-control" id="heroKicker" data-field="hero.kicker" type="text">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="heroTitle">Main Title</label>
+                    <input class="form-control" id="heroTitle" data-field="hero.title" type="text">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="heroSubtitle">Subtitle</label>
+                    <textarea class="form-control" id="heroSubtitle" data-field="hero.subtitle" rows="3"></textarea>
+                  </div>
+                </div>
+              </section>
+
+              <section id="products" class="admin-panel">
+                <div class="panel-title-row">
+                  <h2>Products and Services</h2>
+                  <button class="btn btn-sm btn-success" type="button" data-add="products"><i class="bi bi-plus-lg"></i></button>
+                </div>
+                <label class="form-label" for="productsIntro">Products Intro</label>
+                <textarea class="form-control mb-3" id="productsIntro" data-field="productsIntro" rows="2"></textarea>
+                <div data-list-editor="products"></div>
+              </section>
+
+              <section id="features" class="admin-panel">
+                <div class="panel-title-row">
+                  <h2>Why Customers Choose Us</h2>
+                  <button class="btn btn-sm btn-success" type="button" data-add="features"><i class="bi bi-plus-lg"></i></button>
+                </div>
+                <label class="form-label" for="whyCopy">Why Us Copy</label>
+                <textarea class="form-control mb-3" id="whyCopy" data-field="whyCopy" rows="3"></textarea>
+                <div data-list-editor="features"></div>
+              </section>
+
+              <section id="stats" class="admin-panel">
+                <div class="panel-title-row">
+                  <h2>Stats</h2>
+                  <button class="btn btn-sm btn-success" type="button" data-add="stats"><i class="bi bi-plus-lg"></i></button>
+                </div>
+                <div data-list-editor="stats"></div>
+              </section>
+
+              <section id="about" class="admin-panel">
+                <h2>About Section</h2>
+                <div class="row g-3">
+                  <div class="col-12">
+                    <label class="form-label" for="aboutTitle">Title</label>
+                    <input class="form-control" id="aboutTitle" data-field="about.title" type="text">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="aboutCopy">Description</label>
+                    <textarea class="form-control" id="aboutCopy" data-field="about.copy" rows="4"></textarea>
+                  </div>
+                </div>
+                <div class="panel-title-row mt-4">
+                  <h3>Highlights</h3>
+                  <button class="btn btn-sm btn-success" type="button" data-add="highlights"><i class="bi bi-plus-lg"></i></button>
+                </div>
+                <div data-list-editor="highlights"></div>
+              </section>
+
+              <section id="gallery" class="admin-panel">
+                <div class="panel-title-row">
+                  <h2>Popular Orders</h2>
+                  <button class="btn btn-sm btn-success" type="button" data-add="gallery"><i class="bi bi-plus-lg"></i></button>
+                </div>
+                <div data-list-editor="gallery"></div>
+              </section>
+
+              <section id="contact" class="admin-panel">
+                <h2>Contact Details</h2>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="phoneAdmin">Phone</label>
+                    <input class="form-control" id="phoneAdmin" data-field="contact.phone" type="text">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="emailAdmin">Email</label>
+                    <input class="form-control" id="emailAdmin" data-field="contact.email" type="email">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="addressAdmin">Address</label>
+                    <input class="form-control" id="addressAdmin" data-field="contact.address" type="text">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="mapAdmin">Google Maps Link</label>
+                    <input class="form-control" id="mapAdmin" data-field="contact.mapUrl" type="url">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="contactCopy">Contact Copy</label>
+                    <textarea class="form-control" id="contactCopy" data-field="contact.copy" rows="3"></textarea>
+                  </div>
+                </div>
+              </section>
+
+              <section id="security" class="admin-panel">
+                <h2>Security</h2>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="adminUsername">Admin Username</label>
+                    <input class="form-control" id="adminUsername" data-credential="username" type="text" autocomplete="username">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="adminPassword">New Password</label>
+                    <input class="form-control" id="adminPassword" data-credential="password" type="password" autocomplete="new-password">
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-outline-success" type="button" data-change-password><i class="bi bi-shield-lock me-1"></i> Update Login</button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/content-store.js"></script>
+    <script src="assets/js/admin.js"></script>
+  </body>
+</html>
